@@ -1,0 +1,37 @@
+# --- Python cache / build ---
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# --- Virtual environments & env files ---
+venv/
+.env
+.env.*
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+
+# --- Databases / instance data ---
+# giữ thư mục instance nhưng bỏ qua mọi file bên trong
+instance/*
+!instance/.gitkeep
+
+# bỏ qua các file DB SQLite
+*.sqlite*
+*.db
+
+# --- Tests cache / coverage ---
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Logs ---
+*.log
