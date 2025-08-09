@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jobs-container">
+    <h2>Danh sách công việc</h2>
+
+    <!-- Thông báo flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flash-container">
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Bộ lọc -->
+    <div class="filters">
+        <label for="status-filter" class="visually-hidden">Lọc theo trạng thái</label>
+        <select id="status-filter" name="status-filter" onchange="filterJobs()">
+            <option value="">Tất cả trạng thái</option>
+            <option value="pending">Đang chờ</option>
+            <option value="interviewing">Đang phỏng vấn</option>
+            <option value="rejected">Đã từ chối</option>
+            <option value="accepted">Đã nhận</option>
+        </select>
+    </div>
+
+    <!-- Bảng công việc -->
+    <table class="jobs-table">
+        <thead>
+            <tr>
+                <th>Công ty</th>
+                <th>Vị trí</th>
+                <th>Trạng thái</th>
+                <th>Ngày nộp</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+            <tr>
+                <td>{{ job.company_name }}</td>
+                <td>{{ job.position }}</td>
+                <td>{{ job.status }}</td>
+                <td>{{ job.submission_date.strftime('%Y-%m-%d') }}</td>
+                <td>
+                    <a href="{{ url_for('main.edit_job', job_id=job.id) }}" class="btn edit-btn">Sửa</a>
+                    <form action="{{ url_for('main.delete_job', job_id=job.id) }}" method="POST" class="inline-form"
+                        onsubmit="return confirm('Bạn có chắc muốn xóa?')">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button type="submit" class="btn delete-btn">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if jobs | length == 0 %}
+    <div class="no-jobs">
+        <p>Chưa có công việc nào được thêm vào.</p>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Script lọc -->
+<script>
+    function filterJobs() {
+        const status = document.getElementById("status-filter").value;
+        const url = new URL(window.location.href);
+        if (status) {
+            url.searchParams.set("status", status);
+        } else {
+            url.searchParams.delete("status");
+        }
+        window.location.href = url.toString();
+    }
+</script>
+{% endblock %}

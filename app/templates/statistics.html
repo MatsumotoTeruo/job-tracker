@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="statistics-container">
+    <h2>Thống kê công việc</h2>
+
+    <div class="stats-block">
+        <p><strong>Tổng số công việc:</strong> {{ stats.total }}</p>
+    </div>
+
+    <div class="stats-block">
+        <h3>Số lượng theo trạng thái:</h3>
+        <ul>
+            {% for status, count in stats.by_status.items() %}
+            <li><strong>{{ status|capitalize }}:</strong> {{ count }} ({{ stats.percent_status[status] }}%)</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="stats-block">
+        <h3>Số lượng hồ sơ theo tháng:</h3>
+        <ul>
+            {% for month, count in monthly.items() %}
+            <li>{{ month }}: {{ count }} công việc</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Thêm công việc mới</h2>
+
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            <label for="{{ form.company.id }}">{{ form.company.label.text }}</label>
+            {{ form.company(class_='form-control' + (' is-invalid' if form.company.errors else ''), id=form.company.id,
+            placeholder='Tên công ty') }}
+            {% for error in form.company.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.position.id }}">{{ form.position.label.text }}</label>
+            {{ form.position(class_='form-control' + (' is-invalid' if form.position.errors else ''),
+            id=form.position.id, placeholder='Vị trí ứng tuyển') }}
+            {% for error in form.position.errors %}
+            <span class="error">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.status.id }}">{{ form.status.label.text }}</label>
+            {{ form.status(class_='form-control', id=form.status.id) }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.submission_date.id }}">{{ form.submission_date.label.text }}</label>
+            {{ form.submission_date(class_='form-control', type='date', id=form.submission_date.id) }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.notes.id }}">{{ form.notes.label.text }}</label>
+            {{ form.notes(class_='form-control', id=form.notes.id, placeholder='Ghi chú thêm (tùy chọn)') }}
+        </div>
+
+        <button type="submit" class="btn submit-btn">Thêm công việc</button>
+        <a href="{{ url_for('main.index') }}" class="btn cancel-btn">Hủy</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,167 @@
+/* Reset nho nhỏ */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f7f7f7;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+}
+
+.nav-links a {
+    color: #fff;
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Main */
+.content {
+    padding: 24px;
+}
+
+/* Flash messages */
+.alert {
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin: 10px 0;
+}
+
+.alert-success {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #842029;
+}
+
+/* Cards */
+.form-container,
+.statistics-container,
+.jobs-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .06);
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.is-invalid {
+    border-color: #dc3545;
+    background: #fff5f5;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 13px;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 14px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.submit-btn {
+    background: #198754;
+    color: #fff;
+}
+
+.cancel-btn {
+    background: #6c757d;
+    color: #fff;
+}
+
+.edit-btn {
+    background: #ffc107;
+    color: #000;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: #fff;
+}
+
+.inline-form {
+    display: inline-block;
+}
+
+/* Table */
+.jobs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.jobs-table th,
+.jobs-table td {
+    border-bottom: 1px solid #eee;
+    padding: 12px;
+    text-align: left;
+}
+
+.jobs-table thead th {
+    background: #f2f5fb;
+    font-weight: 700;
+}
+
+/* Filter + a11y */
+.filters {
+    margin-bottom: 12px;
+}
+
+.visually-hidden {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    color: #777;
+    padding: 24px 10px;
+}
