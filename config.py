@@ -9,7 +9,8 @@ os.makedirs(INSTANCE_DIR, exist_ok=True)  # đảm bảo tồn tại
 
 
 class Config:
-    SECRET_KEY = os.environ.get('teruo2102003') or 'this-should-be-changed'
+    SECRET_KEY = os.environ.get(
+        'SECRET_KEY') or '131fd895c8b23169dcd7d6df3275704dcd1908b12dbbe6b4e0adbbc03375daed'
     # Đường dẫn tuyệt đối tới jobs.db
     SQLALCHEMY_DATABASE_URI = (
         os.environ.get('DATABASE_URL')
