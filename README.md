@@ -88,3 +88,6 @@ python run.py
 - Khi người dùng gửi mẫu đơn mới → Frontend kiểm tra → Backend xử lý → Lưu vào Database
 - Khi xem danh sách → Frontend yêu cầu → Backend lấy từ Database → Hiển thị cho người dùng
 - Khi có lỗi → Backend thông báo lại cho Frontend → Hiển thị cho người dùng
+
+docs\Sơ đồ cấu trúc .png
+docs\Example of website.png
