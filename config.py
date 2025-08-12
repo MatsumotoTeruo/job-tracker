@@ -1,4 +1,5 @@
 import os
+import re
 
 # Thư mục gốc dự án (chứa config.py)
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
@@ -12,9 +13,10 @@ class Config:
     SECRET_KEY = os.environ.get(
         'SECRET_KEY') or '131fd895c8b23169dcd7d6df3275704dcd1908b12dbbe6b4e0adbbc03375daed'
     # Đường dẫn tuyệt đối tới jobs.db
-    SQLALCHEMY_DATABASE_URI = (
-        os.environ.get('DATABASE_URL')
-        or 'sqlite:///' + os.path.join(INSTANCE_DIR, 'jobs.db')
-    )
+    uri = os.environ.get('DATABASE_URL')
+    if uri and uri.startswith("postgres://"):
+        uri = uri.replace("postgres://", "postgressql://", 1)
+    SQLALCHEMY_DATABASE_URI = uri or (
+        'sqlite:///' + os.path.join(INSTANCE_DIR, 'job.db'))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     WTF_CSRF_ENABLED = True
